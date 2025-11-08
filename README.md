@@ -94,69 +94,96 @@ VJS-UI 覆盖21+行业场景，提供完整的企业级解决方案：
 
 ```bash
 # npm
-npm install @vjs-ui/vue
+npm install @vjs-ui/core @vjs-ui/tokens
 
 # yarn
-yarn add @vjs-ui/vue
+yarn add @vjs-ui/core @vjs-ui/tokens
 
-# pnpm
-pnpm add @vjs-ui/vue
+# pnpm (推荐)
+pnpm add @vjs-ui/core @vjs-ui/tokens
 ```
 
-### 基础使用
-
-```vue
-<template>
-  <div>
-    <VButton type="primary" @click="handleClick">
-      Click Me
-    </VButton>
-    
-    <VTable 
-      :data="tableData" 
-      :columns="columns"
-      :pagination="true"
-    />
-  </div>
-</template>
-
-<script setup>
-import { VButton, VTable } from '@vjs-ui/vue'
-
-const handleClick = () => {
-  console.log('Button clicked!')
-}
-
-const tableData = [
-  { id: 1, name: 'John', age: 28 },
-  { id: 2, name: 'Jane', age: 32 }
-]
-
-const columns = [
-  { prop: 'id', label: 'ID', width: 80 },
-  { prop: 'name', label: 'Name' },
-  { prop: 'age', label: 'Age', width: 100 }
-]
-</script>
-```
-
-### DSL驱动方式
+### 响应式系统使用
 
 ```javascript
-import { createComponent } from '@vjs-ui/core'
+import { reactive, ref, effect, computed } from '@vjs-ui/core'
 
-// 通过JSON配置创建组件
-const buttonConfig = {
-  type: 'Button',
-  props: {
-    type: 'primary',
-    size: 'large',
-    onClick: () => console.log('clicked')
-  },
-  children: 'Dynamic Button'
+// 1. 响应式对象
+const state = reactive({
+  count: 0,
+  nested: {
+    value: 'hello'
+  }
+})
+
+// 2. 响应式引用
+const count = ref(0)
+const message = ref('Hello VJS-UI')
+
+// 3. 副作用函数
+effect(() => {
+  console.log('Count:', count.value)
+})
+
+count.value++ // 自动触发effect
+
+// 4. 计算属性
+const double = computed(() => count.value * 2)
+console.log(double.value) // 自动计算
+```
+
+### Design Token使用
+
+```javascript
+import { 
+  tokens, 
+  generateCSSString, 
+  injectCSSVariables,
+  setCSSVariable 
+} from '@vjs-ui/tokens'
+
+// 1. 获取token
+console.log(tokens.colors.primary[500]) // #1890ff
+
+// 2. 生成CSS字符串
+const cssString = generateCSSString(tokens)
+console.log(cssString)
+// :root {
+//   --vjs-colors-primary-500: #1890ff;
+//   --vjs-spacing-1: 4px;
+//   ...
+// }
+
+// 3. 注入到页面
+injectCSSVariables(tokens)
+
+// 4. 运行时修改
+setCSSVariable('colors-primary-500', '#FF0000')
+
+// 5. 在CSS中使用
+// .button {
+//   background: var(--vjs-colors-primary-500);
+//   padding: var(--vjs-spacing-4);
+//   border-radius: var(--vjs-borderRadius-md);
+// }
+```
+
+### TypeScript支持
+
+```typescript
+import type { Ref, ComputedRef } from '@vjs-ui/core'
+import type { Tokens, CSSVariables } from '@vjs-ui/tokens'
+
+// 完整的类型推导
+const count: Ref<number> = ref(0)
+const double: ComputedRef<number> = computed(() => count.value * 2)
+
+// Token类型安全
+const tokens: Tokens = {
+  colors: { /* ... */ },
+  spacing: { /* ... */ },
+  // ...
 }
-
-const button = createComponent(buttonConfig)
 ```
 
 ---
