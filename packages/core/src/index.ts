@@ -3,10 +3,8 @@
  * 核心引擎
  */
 
-// 导出所有核心功能（MVP 阶段占位）
-export const createComponent = (config: any) => {
-  console.log('createComponent:', config)
-  return config
-}
+// 导出响应式系统
+export * from './reactive'
 
+// 版本信息
 export const version = '0.1.0'

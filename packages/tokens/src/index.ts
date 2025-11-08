@@ -1,22 +1,10 @@
 /**
  * @vjs-ui/tokens
- * Design Tokens
+ * Design Tokens系统
  */
 
-export const tokens = {
-  color: {
-    primary: '#1890ff',
-    success: '#52c41a',
-    warning: '#faad14',
-    error: '#f5222d',
-  },
-  spacing: {
-    xs: '4px',
-    sm: '8px',
-    md: '16px',
-    lg: '24px',
-    xl: '32px',
-  },
-}
+export * from './types'
+export * from './generator'
+export { default as tokens } from './tokens.json'
 
 export const version = '0.1.0'
