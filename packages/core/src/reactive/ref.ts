@@ -126,9 +126,5 @@ export function computed<T>(getter: () => T): ComputedRef<T> {
     [IS_REF]: true,
   }
 
-  // 创建effect来追踪依赖
-  const runner = () => getter()
-  runner()
-
   return computedRef as ComputedRef<T>
 }
