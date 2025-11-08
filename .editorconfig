@@ -1,0 +1,29 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# 顶级配置文件
+root = true
+
+# 所有文件
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Markdown文件保留尾部空格
+[*.md]
+trim_trailing_whitespace = false
+
+# YAML文件
+[*.{yml,yaml}]
+indent_size = 2
+
+# Makefile使用tab
+[Makefile]
+indent_style = tab
+
+# 包管理文件
+[{package.json,package-lock.json,pnpm-lock.yaml}]
+indent_size = 2
