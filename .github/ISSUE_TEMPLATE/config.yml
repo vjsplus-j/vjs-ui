@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 讨论区
+    url: https://github.com/vjsplus-j/vjs-ui/discussions
+    about: 一般性问题、想法讨论、寻求帮助
+  - name: 📖 文档
+    url: https://vjs-ui.github.io
+    about: 查看完整文档和示例
+  - name: 🔒 安全漏洞
+    url: https://github.com/vjsplus-j/vjs-ui/security/advisories/new
+    about: 私下报告安全问题

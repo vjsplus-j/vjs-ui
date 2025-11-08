@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "composite": true,
+    "paths": {
+      "@vjs-ui/core": ["../core/src"],
+      "@vjs-ui/tokens": ["../tokens/src"],
+      "@vjs-ui/shared": ["../shared/src"],
+      "@vjs-ui/utils": ["../utils/src"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "__tests__"]
+}

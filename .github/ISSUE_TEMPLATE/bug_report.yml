@@ -1,0 +1,116 @@
+name: 🐛 Bug报告
+description: 报告VJS-UI的问题
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你花时间填写这份Bug报告！
+        
+  - type: checkboxes
+    id: pre-check
+    attributes:
+      label: 提交前检查
+      description: 请确认你已完成以下步骤
+      options:
+        - label: 我已搜索[Issues](https://github.com/vjsplus-j/vjs-ui/issues)，确认这不是重复问题
+          required: true
+        - label: 我已阅读[文档](https://vjs-ui.github.io)
+          required: true
+        - label: 我使用的是最新版本
+          required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: VJS-UI版本
+      description: 你使用的VJS-UI版本号
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: 受影响的包
+      options:
+        - "@vjs-ui/core"
+        - "@vjs-ui/vue"
+        - "@vjs-ui/tokens"
+        - "@vjs-ui/utils"
+        - "其他"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 清晰简洁地描述问题
+      placeholder: 当我...时，发生了...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: 详细的复现步骤
+      placeholder: |
+        1. 导入组件...
+        2. 配置...
+        3. 调用方法...
+        4. 看到错误...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+      description: 你期望发生什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 实际发生了什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-link
+    attributes:
+      label: 最小复现链接
+      description: 提供最小可复现示例（StackBlitz、CodeSandbox等）
+      placeholder: https://stackblitz.com/...
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境信息
+      description: 请提供完整的环境信息
+      value: |
+        - OS: [例如 macOS 13.0]
+        - Node: [例如 18.16.0]
+        - 包管理器: [例如 pnpm 8.6.0]
+        - 浏览器: [例如 Chrome 115]
+        - 框架: [例如 Vue 3.3.4]
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 错误日志
+      description: 如果有相关的错误信息或日志，请粘贴在这里
+      render: shell
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 补充信息
+      description: 其他任何可能有帮助的信息

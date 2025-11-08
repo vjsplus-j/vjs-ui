@@ -1,0 +1,60 @@
+{
+  "name": "@vjs-ui/vue",
+  "version": "0.1.0",
+  "description": "VJS-UI Vue 3 组件库",
+  "keywords": [
+    "vjs-ui",
+    "vue",
+    "vue3",
+    "components",
+    "ui"
+  ],
+  "homepage": "https://github.com/vjsplus-j/vjs-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vjsplus-j/vjs-ui.git",
+    "directory": "packages/vue"
+  },
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@vjs-ui/core": "workspace:*",
+    "@vjs-ui/tokens": "workspace:*",
+    "@vjs-ui/shared": "workspace:*",
+    "@vjs-ui/utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0",
+    "vue": "^3.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

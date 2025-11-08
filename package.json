@@ -1,0 +1,76 @@
+{
+  "name": "vjs-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "基于 Design Token + DSL 驱动的现代化跨框架UI组件库",
+  "keywords": [
+    "ui",
+    "components",
+    "vue",
+    "react",
+    "design-tokens",
+    "dsl",
+    "headless-ui"
+  ],
+  "homepage": "https://github.com/vjsplus-j/vjs-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vjsplus-j/vjs-ui.git"
+  },
+  "license": "MIT",
+  "author": "VJS",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "build:core": "turbo run build --filter=@vjs-ui/core",
+    "build:vue": "turbo run build --filter=@vjs-ui/vue",
+    "build:react": "turbo run build --filter=@vjs-ui/react",
+    "test": "turbo run test",
+    "test:unit": "vitest",
+    "test:e2e": "playwright test",
+    "lint": "eslint . --ext .ts,.tsx,.vue",
+    "lint:fix": "eslint . --ext .ts,.tsx,.vue --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,vue,json,md}\"",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "turbo run build && changeset publish",
+    "docs:dev": "turbo run dev --filter=docs",
+    "docs:build": "turbo run build --filter=docs",
+    "playground:dev": "turbo run dev --filter=playground"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@playwright/test": "^1.40.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vitest/ui": "^1.0.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-vue": "^9.18.0",
+    "jsdom": "^23.0.0",
+    "prettier": "^3.1.0",
+    "rollup": "^4.6.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "packageManager": "pnpm@8.11.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
