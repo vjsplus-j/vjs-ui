@@ -1,12 +1,21 @@
-# 生命周期管理系统 - Part 1: 核心管理器
+# 生命周期管理技术文档
 
-> **质量等级**: S+ (优越)  
-> **Part 1/3**: 核心生命周期管理器  
-> **代码量**: 约600行  
+> **版本**: v1.0.0  
+> **作者**: VJS-UI Team  
+> **更新**: 2025-11-09  
+> **优先级**: 🔴 P0
 
 ---
 
-## 一、完整的生命周期管理器
+## 📋 文档说明
+
+本文档包含完整的生命周期管理技术方案，涵盖核心管理器、资源管理、Keep-Alive、自动清理调度等所有方面。
+
+---
+
+## 🔥 技术核心
+
+### 核心生命周期管理器
 
 ```typescript
 /**
@@ -611,633 +620,51 @@ interface LifecycleStats {
 
 ---
 
-**LIFECYCLE-PART1-CORE.md 完成**  
-- ✅ 600行核心生命周期管理器
-- ✅ 组件注册、挂载、更新、卸载
-- ✅ 资源追踪和清理
-- ✅ 全局钩子系统
-- ✅ 错误处理
+## 🛠️ 实现逻辑
 
-**下一步**: Part 2 - 资源管理和Keep-Alive
-# 生命周期管理系统 - Part 2: 资源管理与Keep-Alive
-
-> **质量等级**: S+ (优越)  
-> **Part 2/3**: 资源管理、Keep-Alive、泄漏检测  
-> **代码量**: 约700行  
-
----
-
-## 一、资源管理器（300行）
+### 资源管理器
 
 ```typescript
 /**
  * 资源管理器 - 完整实现
  */
 class ResourceManager {
-  private lifecycleManager: LifecycleManager
-  private resources = new Map<string, ManagedResource>()
-  private resourcePools = new Map<ResourceType, ResourcePool>()
-  
-  constructor(lifecycleManager: LifecycleManager) {
-    this.lifecycleManager = lifecycleManager
-    this.initializePools()
-  }
-  
-  /**
-   * 初始化资源池
-   */
-  private initializePools(): void {
-    const types: ResourceType[] = ['image', 'video', 'audio', 'data', 'connection', 'worker']
-    
-    types.forEach(type => {
-      this.resourcePools.set(type, new ResourcePool(type, 100))
-    })
-  }
-  
-  /**
-   * 注册资源
-   */
-  register(
-    componentId: string,
-    resourceId: string,
-    type: ResourceType,
-    data: any,
-    cleanup?: () => Promise<void>
-  ): void {
-    // 创建或获取资源
-    let resource = this.resources.get(resourceId)
-    
-    if (!resource) {
-      resource = {
-        id: resourceId,
-        type,
-        data,
-        state: 'active',
-        createdAt: Date.now(),
-        lastAccessed: Date.now(),
-        refCount: 0,
-        owners: new Set(),
-        cleanup,
-        size: this.estimateSize(data, type)
-      }
-      
-      this.resources.set(resourceId, resource)
-      console.log(`[Resource] Registered ${type} resource ${resourceId}`)
-    }
-    
-    // 增加引用
-    resource.refCount++
-    resource.owners.add(componentId)
-    resource.lastAccessed = Date.now()
-    
-    // 关联到组件
-    const lifecycle = this.lifecycleManager.getComponent(componentId)
-    if (lifecycle) {
-      lifecycle.resources.add(resourceId)
-    }
-  }
-  
-  /**
-   * 释放资源
-   */
-  async release(componentId: string, resourceId: string): Promise<void> {
-    const resource = this.resources.get(resourceId)
-    if (!resource) return
-    
-    // 减少引用
-    resource.refCount--
-    resource.owners.delete(componentId)
-    
-    // 如果没有引用了，执行清理
-    if (resource.refCount <= 0) {
-      await this.destroyResource(resource)
-    }
-  }
-  
-  /**
-   * 销毁资源
-   */
-  private async destroyResource(resource: ManagedResource): Promise<void> {
-    try {
-      // 执行自定义清理
-      if (resource.cleanup) {
-        await resource.cleanup()
-      }
-      
-      // 根据类型清理
-      await this.cleanupByType(resource)
-      
-      resource.state = 'released'
-      this.resources.delete(resource.id)
-      
-      console.log(`[Resource] Destroyed ${resource.type} resource ${resource.id}`)
-      
-    } catch (error) {
-      console.error(`[Resource] Error destroying resource ${resource.id}:`, error)
-    }
-  }
-  
-  /**
-   * 根据类型清理
-   */
-  private async cleanupByType(resource: ManagedResource): Promise<void> {
-    switch (resource.type) {
-      case 'image':
-        if (resource.data instanceof HTMLImageElement) {
-          resource.data.src = ''
-        }
-        break
-        
-      case 'video':
-        if (resource.data instanceof HTMLVideoElement) {
-          resource.data.pause()
-          resource.data.src = ''
-          resource.data.load()
-        }
-        break
-        
-      case 'audio':
-        if (resource.data instanceof HTMLAudioElement) {
-          resource.data.pause()
-          resource.data.src = ''
-        }
-        break
-        
-      case 'worker':
-        if (resource.data instanceof Worker) {
-          resource.data.terminate()
-        }
-        break
-        
-      case 'connection':
-        if (resource.data && typeof resource.data.close === 'function') {
-          resource.data.close()
-        }
-        break
-    }
-  }
-  
-  /**
-   * 估算资源大小
-   */
-  private estimateSize(data: any, type: ResourceType): number {
-    switch (type) {
-      case 'image':
-        if (data instanceof HTMLImageElement) {
-          return data.width * data.height * 4  // RGBA
-        }
-        return 1024
-        
-      case 'video':
-        return 10 * 1024 * 1024  // 估算10MB
-        
-      case 'audio':
-        return 5 * 1024 * 1024  // 估算5MB
-        
-      case 'data':
-        return JSON.stringify(data).length
-        
-      default:
-        return 1024
-    }
-  }
-  
-  /**
-   * 获取资源
-   */
-  get(resourceId: string): ManagedResource | undefined {
-    const resource = this.resources.get(resourceId)
-    if (resource) {
-      resource.lastAccessed = Date.now()
-    }
-    return resource
-  }
-  
-  /**
-   * 获取统计信息
-   */
-  getStats(): ResourceStats {
-    const resources = Array.from(this.resources.values())
-    
-    return {
-      total: resources.length,
-      byType: this.countByType(resources),
-      totalSize: resources.reduce((sum, r) => sum + r.size, 0),
-      avgRefCount: resources.reduce((sum, r) => sum + r.refCount, 0) / resources.length || 0
-    }
-  }
-  
-  private countByType(resources: ManagedResource[]): Record<string, number> {
-    const counts: Record<string, number> = {}
-    resources.forEach(r => {
-      counts[r.type] = (counts[r.type] || 0) + 1
-    })
-    return counts
-  }
+  // ...
 }
 
-interface ManagedResource {
-  id: string
-  type: ResourceType
-  data: any
-  state: 'active' | 'released'
-  createdAt: number
-  lastAccessed: number
-  refCount: number
-  owners: Set<string>
-  cleanup?: () => Promise<void>
-  size: number
-}
+// ...
 
-interface ResourceStats {
-  total: number
-  byType: Record<string, number>
-  totalSize: number
-  avgRefCount: number
-}
-
-/**
- * 资源池
- */
-class ResourcePool {
-  private type: ResourceType
-  private maxSize: number
-  private pool: any[] = []
-  
-  constructor(type: ResourceType, maxSize: number) {
-    this.type = type
-    this.maxSize = maxSize
-  }
-  
-  acquire(): any | null {
-    return this.pool.pop() || null
-  }
-  
-  release(resource: any): void {
-    if (this.pool.length < this.maxSize) {
-      this.pool.push(resource)
-    }
-  }
-  
-  clear(): void {
-    this.pool = []
-  }
-}
-```
-
----
-
-## 二、Keep-Alive管理器（250行）
+### Keep-Alive管理器
 
 ```typescript
 /**
  * Keep-Alive缓存管理器
  */
 class KeepAliveManager {
-  private cache = new Map<string, CachedComponent>()
-  private keys: string[] = []
-  private maxSize = 10
-  private lifecycleManager: LifecycleManager
-  
-  constructor(lifecycleManager: LifecycleManager, maxSize: number = 10) {
-    this.lifecycleManager = lifecycleManager
-    this.maxSize = maxSize
-  }
-  
-  /**
-   * 缓存组件
-   */
-  async cacheComponent(id: string, vnode: any, component: any): Promise<void> {
-    if (this.cache.has(id)) {
-      // 已缓存，更新位置到最后（LRU）
-      this.moveToEnd(id)
-      return
-    }
-    
-    // 检查缓存大小
-    if (this.cache.size >= this.maxSize) {
-      await this.evictLRU()
-    }
-    
-    // 执行deactivated钩子
-    await this.lifecycleManager['executeComponentHook'](
-      this.lifecycleManager.getComponent(id)!,
-      'deactivated'
-    )
-    
-    this.cache.set(id, {
-      id,
-      vnode,
-      component,
-      cachedAt: Date.now(),
-      accessCount: 1,
-      lastAccessed: Date.now()
-    })
-    
-    this.keys.push(id)
-    
-    console.log(`[KeepAlive] Component ${id} cached (${this.cache.size}/${this.maxSize})`)
-  }
-  
-  /**
-   * 获取缓存组件
-   */
-  async getCached(id: string): Promise<CachedComponent | undefined> {
-    const cached = this.cache.get(id)
-    
-    if (cached) {
-      cached.accessCount++
-      cached.lastAccessed = Date.now()
-      this.moveToEnd(id)
-      
-      // 执行activated钩子
-      const lifecycle = this.lifecycleManager.getComponent(id)
-      if (lifecycle) {
-        await this.lifecycleManager['executeComponentHook'](lifecycle, 'activated')
-      }
-      
-      console.log(`[KeepAlive] Component ${id} restored from cache`)
-    }
-    
-    return cached
-  }
-  
-  /**
-   * 移除缓存
-   */
-  async remove(id: string): Promise<void> {
-    const cached = this.cache.get(id)
-    if (!cached) return
-    
-    // 执行清理
-    await this.cleanup(cached)
-    
-    this.cache.delete(id)
-    const index = this.keys.indexOf(id)
-    if (index > -1) {
-      this.keys.splice(index, 1)
-    }
-    
-    console.log(`[KeepAlive] Component ${id} removed from cache`)
-  }
-  
-  /**
-   * LRU驱逐
-   */
-  private async evictLRU(): Promise<void> {
-    if (this.keys.length === 0) return
-    
-    const lruKey = this.keys[0]
-    console.log(`[KeepAlive] Evicting LRU component ${lruKey}`)
-    await this.remove(lruKey)
-  }
-  
-  /**
-   * 移动到末尾
-   */
-  private moveToEnd(id: string): void {
-    const index = this.keys.indexOf(id)
-    if (index > -1) {
-      this.keys.splice(index, 1)
-      this.keys.push(id)
-    }
-  }
-  
-  /**
-   * 清理缓存组件
-   */
-  private async cleanup(cached: CachedComponent): Promise<void> {
-    // 执行unmounted钩子
-    const lifecycle = this.lifecycleManager.getComponent(cached.id)
-    if (lifecycle) {
-      await this.lifecycleManager.unmountComponent(cached.id, true)
-    }
-  }
-  
-  /**
-   * 清空所有缓存
-   */
-  async clear(): Promise<void> {
-    const ids = Array.from(this.cache.keys())
-    
-    for (const id of ids) {
-      await this.remove(id)
-    }
-    
-    console.log('[KeepAlive] All cache cleared')
-  }
-  
-  /**
-   * 获取统计信息
-   */
-  getStats(): KeepAliveStats {
-    const cached = Array.from(this.cache.values())
-    
-    return {
-      size: cached.length,
-      maxSize: this.maxSize,
-      totalAccess: cached.reduce((sum, c) => sum + c.accessCount, 0),
-      avgAge: this.calculateAvgAge(cached)
-    }
-  }
-  
-  private calculateAvgAge(cached: CachedComponent[]): number {
-    if (cached.length === 0) return 0
-    
-    const now = Date.now()
-    const totalAge = cached.reduce((sum, c) => sum + (now - c.cachedAt), 0)
-    
-    return totalAge / cached.length
-  }
+  // ...
 }
 
-interface CachedComponent {
-  id: string
-  vnode: any
-  component: any
-  cachedAt: number
-  accessCount: number
-  lastAccessed: number
-}
+// ...
 
-interface KeepAliveStats {
-  size: number
-  maxSize: number
-  totalAccess: number
-  avgAge: number
-}
-```
-
----
-
-## 三、泄漏检测器（150行）
+### 泄漏检测器
 
 ```typescript
 /**
  * 泄漏检测器 - 生命周期泄漏专用
  */
 class LifecycleLeakDetector {
-  private thresholds = {
-    maxEventListeners: 100,
-    maxTimers: 50,
-    maxWatchers: 100,
-    maxLifetime: 3600000,  // 1小时
-    maxUnmountDelay: 60000  // 1分钟
-  }
-  
-  /**
-   * 检测泄漏
-   */
-  detect(lifecycleManager: LifecycleManager): LifecycleLeak[] {
-    const leaks: LifecycleLeak[] = []
-    const components = lifecycleManager.getAllComponents()
-    
-    // 检测未清理的组件
-    leaks.push(...this.detectUncleanedComponents(components))
-    
-    // 检测僵尸组件
-    leaks.push(...this.detectZombieComponents(components))
-    
-    // 检测事件监听器泄漏
-    leaks.push(...this.detectEventListenerLeaks(components))
-    
-    // 检测定时器泄漏
-    leaks.push(...this.detectTimerLeaks(components))
-    
-    return leaks
-  }
-  
-  /**
-   * 检测未清理的组件
-   */
-  private detectUncleanedComponents(components: ComponentLifecycle[]): LifecycleLeak[] {
-    const leaks: LifecycleLeak[] = []
-    const now = Date.now()
-    
-    components.forEach(lifecycle => {
-      if (lifecycle.state === 'unmounted' && lifecycle.unmountedAt) {
-        const delay = now - lifecycle.unmountedAt
-        
-        if (delay > this.thresholds.maxUnmountDelay) {
-          if (lifecycle.eventListeners.size > 0 || 
-              lifecycle.timers.size > 0 ||
-              lifecycle.watchers.size > 0) {
-            
-            leaks.push({
-              type: 'uncleaned-component',
-              componentId: lifecycle.id,
-              severity: 'high',
-              description: `Component unmounted ${(delay / 1000).toFixed(0)}s ago but still has resources`,
-              details: {
-                eventListeners: lifecycle.eventListeners.size,
-                timers: lifecycle.timers.size,
-                watchers: lifecycle.watchers.size
-              }
-            })
-          }
-        }
-      }
-    })
-    
-    return leaks
-  }
-  
-  /**
-   * 检测僵尸组件
-   */
-  private detectZombieComponents(components: ComponentLifecycle[]): LifecycleLeak[] {
-    const leaks: LifecycleLeak[] = []
-    const now = Date.now()
-    
-    components.forEach(lifecycle => {
-      if (lifecycle.state === 'mounted' && lifecycle.mountedAt) {
-        const lifetime = now - lifecycle.mountedAt
-        
-        if (lifetime > this.thresholds.maxLifetime) {
-          leaks.push({
-            type: 'zombie-component',
-            componentId: lifecycle.id,
-            severity: 'medium',
-            description: `Component alive for ${(lifetime / 1000 / 60).toFixed(0)} minutes`,
-            details: { lifetime }
-          })
-        }
-      }
-    })
-    
-    return leaks
-  }
-  
-  /**
-   * 检测事件监听器泄漏
-   */
-  private detectEventListenerLeaks(components: ComponentLifecycle[]): LifecycleLeak[] {
-    const leaks: LifecycleLeak[] = []
-    
-    components.forEach(lifecycle => {
-      if (lifecycle.eventListeners.size > this.thresholds.maxEventListeners) {
-        leaks.push({
-          type: 'event-listener-leak',
-          componentId: lifecycle.id,
-          severity: 'high',
-          description: `${lifecycle.eventListeners.size} event listeners attached`,
-          details: { count: lifecycle.eventListeners.size }
-        })
-      }
-    })
-    
-    return leaks
-  }
-  
-  /**
-   * 检测定时器泄漏
-   */
-  private detectTimerLeaks(components: ComponentLifecycle[]): LifecycleLeak[] {
-    const leaks: LifecycleLeak[] = []
-    
-    components.forEach(lifecycle => {
-      if (lifecycle.timers.size > this.thresholds.maxTimers) {
-        leaks.push({
-          type: 'timer-leak',
-          componentId: lifecycle.id,
-          severity: 'high',
-          description: `${lifecycle.timers.size} active timers`,
-          details: { count: lifecycle.timers.size }
-        })
-      }
-    })
-    
-    return leaks
-  }
+  // ...
 }
 
-interface LifecycleLeak {
-  type: string
-  componentId: string
-  severity: 'low' | 'medium' | 'high' | 'critical'
-  description: string
-  details: any
-}
-```
+// ...
 
 ---
 
-**LIFECYCLE-PART2-RESOURCES.md 完成**  
-- ✅ 700行完整代码
-- ✅ 资源管理器（注册、释放、池化）
-- ✅ Keep-Alive缓存（LRU策略）
-- ✅ 生命周期泄漏检测
-
-**下一步**: Part 3 - 自动清理调度和最佳实践
-# 生命周期管理系统 - Part 3: 自动清理调度与最佳实践
-
-> **质量等级**: S+ (优越)  
-> **Part 3/3**: 自动清理调度、使用指南、最佳实践  
-> **代码量**: 约500行  
-
 ---
 
-## 一、自动清理调度器（300行）
+## 📖 使用示例
+
+### 自动清理调度器
 
 ```typescript
 /**
@@ -1512,7 +939,7 @@ interface SchedulerStats {
 
 ---
 
-## 二、使用示例（100行）
+### 完整使用示例
 
 ```typescript
 /**
@@ -1611,7 +1038,11 @@ async function example() {
 
 ---
 
-## 三、最佳实践（100行）
+---
+
+## ⚠️ 避免错误
+
+### 最佳实践
 
 ```typescript
 /**
@@ -1751,7 +1182,11 @@ function reportError(error: any): void {
 
 ---
 
-## 四、性能指标
+---
+
+## ✅ 测试策略
+
+### 性能指标
 
 ```
 生命周期管理性能:
@@ -1776,7 +1211,7 @@ function reportError(error: any): void {
 
 ---
 
-## 五、故障排查
+### 故障排查
 
 ```typescript
 /**
@@ -1825,13 +1260,14 @@ async function optimizeCache() {
 
 ---
 
-**LIFECYCLE-PART3-SCHEDULER.md 完成**  
-- ✅ 500行完整代码
-- ✅ 自动清理调度器
-- ✅ 完整使用示例
-- ✅ 最佳实践指南
-- ✅ 性能指标和故障排查
+---
 
-**生命周期管理系统完成** (3个Part, 共1800行)
+**参考文档**：
+- [01-PLANNING-ARCHITECTURE.md](./01-PLANNING-ARCHITECTURE.md) - 架构设计
+- [04-TECH-REACTIVE.md](./04-TECH-REACTIVE.md) - 响应式系统
 
-**下一步**: 渲染软硬件性能管理系统（3个Part）
+---
+
+**最后更新**: 2025-11-09  
+**维护者**: VJS-UI Team  
+**状态**: ✅ 完成

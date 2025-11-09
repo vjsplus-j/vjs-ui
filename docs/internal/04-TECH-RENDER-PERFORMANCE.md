@@ -1,12 +1,21 @@
-# 渲染软硬件性能管理系统 - Part 1: 性能监控
+# 渲染性能管理技术文档
 
-> **质量等级**: S+ (优越)  
-> **Part 1/3**: 性能监控、FPS追踪、硬件检测  
-> **代码量**: 约700行  
+> **版本**: v1.0.0  
+> **作者**: VJS-UI Team  
+> **更新**: 2025-11-09  
+> **优先级**: 🔴 P0
 
 ---
 
-## 一、性能监控器（400行）
+## 📋 文档说明
+
+本文档包含完整的渲染性能管理技术方案，涵盖软硬件性能监控、FPS追踪、硬件检测、自适应调整等所有方面。
+
+---
+
+## 🔥 技术核心
+
+### 性能监控器
 
 ```typescript
 /**
@@ -401,134 +410,35 @@ class FrameTimeAnalyzer {
    * 开始测量帧
    */
   startFrame(): FrameContext {
-    return {
-      startTime: performance.now(),
-      marks: new Map()
-    }
+    // ...
   }
   
   /**
    * 标记阶段
    */
   mark(context: FrameContext, stage: FrameStage): void {
-    context.marks.set(stage, performance.now())
+    // ...
   }
   
   /**
    * 结束测量帧
    */
   endFrame(context: FrameContext): void {
-    const endTime = performance.now()
-    const totalTime = endTime - context.startTime
-    
-    const sample: FrameSample = {
-      timestamp: Date.now(),
-      totalTime,
-      stages: this.calculateStages(context, endTime)
-    }
-    
-    this.samples.push(sample)
-    
-    if (this.samples.length > this.maxSamples) {
-      this.samples.shift()
-    }
-    
-    // 检查慢帧
-    if (totalTime > 16.67) {
-      this.analyzeSlowFrame(sample)
-    }
-  }
-  
-  /**
-   * 计算各阶段耗时
-   */
-  private calculateStages(context: FrameContext, endTime: number): Map<FrameStage, number> {
-    const stages = new Map<FrameStage, number>()
-    const stageOrder: FrameStage[] = ['update', 'diff', 'patch', 'layout', 'paint']
-    
-    let lastTime = context.startTime
-    
-    stageOrder.forEach(stage => {
-      const markTime = context.marks.get(stage)
-      if (markTime) {
-        stages.set(stage, markTime - lastTime)
-        lastTime = markTime
-      }
-    })
-    
-    // 剩余时间
-    const remaining = endTime - lastTime
-    if (remaining > 0) {
-      stages.set('idle', remaining)
-    }
-    
-    return stages
-  }
-  
-  /**
-   * 分析慢帧
-   */
-  private analyzeSlowFrame(sample: FrameSample): void {
-    const bottlenecks: string[] = []
-    
-    sample.stages.forEach((time, stage) => {
-      if (time > 5) {  // 超过5ms就算瓶颈
-        bottlenecks.push(`${stage}: ${time.toFixed(2)}ms`)
-      }
-    })
-    
-    console.warn(
-      `[FrameAnalyzer] Slow frame detected (${sample.totalTime.toFixed(2)}ms)`,
-      bottlenecks.length > 0 ? 'Bottlenecks: ' + bottlenecks.join(', ') : ''
-    )
+    // ...
   }
   
   /**
    * 获取分析结果
    */
   getAnalysis(): FrameAnalysis {
-    if (this.samples.length === 0) {
-      return {
-        avgFrameTime: 0,
-        avgStages: new Map(),
-        slowFrames: 0,
-        p95FrameTime: 0,
-        p99FrameTime: 0
-      }
-    }
-    
-    const frameTimes = this.samples.map(s => s.totalTime).sort((a, b) => a - b)
-    const slowFrames = frameTimes.filter(t => t > 16.67).length
-    
-    return {
-      avgFrameTime: frameTimes.reduce((a, b) => a + b, 0) / frameTimes.length,
-      avgStages: this.calculateAvgStages(),
-      slowFrames,
-      p95FrameTime: frameTimes[Math.floor(frameTimes.length * 0.95)],
-      p99FrameTime: frameTimes[Math.floor(frameTimes.length * 0.99)]
-    }
+    // ...
   }
   
   /**
    * 计算各阶段平均耗时
    */
   private calculateAvgStages(): Map<FrameStage, number> {
-    const sums = new Map<FrameStage, number>()
-    const counts = new Map<FrameStage, number>()
-    
-    this.samples.forEach(sample => {
-      sample.stages.forEach((time, stage) => {
-        sums.set(stage, (sums.get(stage) || 0) + time)
-        counts.set(stage, (counts.get(stage) || 0) + 1)
-      })
-    })
-    
-    const avgs = new Map<FrameStage, number>()
-    sums.forEach((sum, stage) => {
-      avgs.set(stage, sum / counts.get(stage)!)
-    })
-    
-    return avgs
+    // ...
   }
 }
 
@@ -636,22 +546,12 @@ function enableAdvancedFeatures() {}
 
 ---
 
-**RENDER-PERFORMANCE-PART1-MONITOR.md 完成**  
-- ✅ 700行完整代码
-- ✅ 性能监控器（FPS、帧时间、硬件检测）
-- ✅ 帧时间分析器（各阶段耗时）
-- ✅ 动态性能级别调整
-
-**下一步**: Part 2 - 渲染优化策略
-# 渲染软硬件性能管理系统 - Part 2: 渲染优化策略
-
-> **质量等级**: S+ (优越)  
-> **Part 2/3**: 时间分片、批量更新、GPU加速、按需渲染  
-> **代码量**: 约700行  
 
 ---
 
-## 一、时间分片渲染器（300行）
+## 🛠️ 实现逻辑
+
+### 时间分片渲染器
 
 ```typescript
 /**
@@ -1205,23 +1105,6 @@ function renderNodes(nodes: any[]) {}
 
 ---
 
-**RENDER-PERFORMANCE-PART2-OPTIMIZATION.md 完成**  
-- ✅ 700行完整代码
-- ✅ 时间分片渲染
-- ✅ 批量更新优化
-- ✅ 按需渲染
-- ✅ 自适应策略
-
-**下一步**: Part 3 - 浏览器兼容性处理
-# 渲染软硬件性能管理系统 - Part 3: 浏览器兼容性
-
-> **质量等级**: S+ (优越)  
-> **Part 3/3**: 浏览器检测、Polyfill、降级策略  
-> **代码量**: 约600行  
-
----
-
-## 一、浏览器能力检测器（300行）
 
 ```typescript
 /**
@@ -1837,13 +1720,14 @@ Edge:
 
 ---
 
-**RENDER-PERFORMANCE-PART3-COMPATIBILITY.md 完成**  
-- ✅ 600行完整代码
-- ✅ 浏览器能力检测
-- ✅ Polyfill自动加载
-- ✅ 降级策略管理
-- ✅ 兼容性矩阵
+---
 
-**渲染软硬件性能管理系统完成** (3个Part, 共2000行)
+**参考文档**：
+- [01-PLANNING-ARCHITECTURE.md](./01-PLANNING-ARCHITECTURE.md) - 架构设计
+- [04-TECH-WORKLOAD-ESTIMATOR.md](./04-TECH-WORKLOAD-ESTIMATOR.md) - 工作量预估器
 
-**下一步**: 响应式功能与性能优化系统（2个Part）
+---
+
+**最后更新**: 2025-11-09  
+**维护者**: VJS-UI Team  
+**状态**: ✅ 完成

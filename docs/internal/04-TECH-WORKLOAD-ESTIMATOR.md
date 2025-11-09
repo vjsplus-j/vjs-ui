@@ -1,12 +1,35 @@
-# VJS-UI 工作量预估器完整实现
+# 工作量预估器技术文档
 
-> **优先级**: 🔴 P0（必须解决）  
-> **工作量**: 2-3天  
-> **收益**: 避免丢帧，提升渲染流畅度  
+> **版本**: v1.0.0  
+> **作者**: VJS-UI Team  
+> **更新**: 2025-11-09  
+> **优先级**: 🔴 P0
 
 ---
 
-## 一、问题分析
+## 📋 文档说明
+
+本文档包含完整的工作量预估器技术方案，涵盖设计、实现、测试等所有方面。
+
+---
+
+## 🎯 预期效果
+
+### 功能目标
+
+**核心目标**：通过历史数据预测任务执行时间，避免丢帧，提升渲染流畅度
+
+**性能目标**：
+- **丢帧率**: -95%（几乎消除丢帧）
+- **帧率稳定性**: +85%（稳定60fps）
+- **预估准确率**: 85-90%
+- **预估开销**: <0.01ms（可忽略）
+
+---
+
+## 💡 设计思路
+
+### 问题分析
 
 ### 当前设计的问题
 
@@ -53,8 +76,6 @@ const renderComplexTree = () => {
 ```
 
 ---
-
-## 二、设计思路
 
 ### 核心概念
 
@@ -106,7 +127,9 @@ const estimate = percentile(history, 0.25)
 
 ---
 
-## 三、完整实现
+## 🛠️ 实现逻辑
+
+### 核心实现
 
 ```typescript
 /**
@@ -318,7 +341,7 @@ export class WorkloadEstimator {
 
 ---
 
-## 四、集成到渲染器
+### 集成到渲染器
 
 ```typescript
 /**
@@ -395,7 +418,9 @@ export class ConcurrentRenderer {
 
 ---
 
-## 五、高级特性
+## 🔥 技术核心
+
+### 高级特性
 
 ### 1. 自适应预估策略
 
@@ -518,7 +543,7 @@ export class ComplexityAwareEstimator extends WorkloadEstimator {
 
 ---
 
-## 六、使用示例
+## 📖 使用示例
 
 ```typescript
 // 示例1: 基础使用
@@ -553,7 +578,9 @@ stats.details.forEach(detail => {
 
 ---
 
-## 七、性能测试
+## ✅ 测试策略
+
+### 性能测试
 
 ```typescript
 import { describe, it, expect, vi } from 'vitest'
@@ -612,7 +639,7 @@ describe('WorkloadEstimator', () => {
 
 ---
 
-## 八、性能指标
+### 性能指标
 
 ### 预期收益
 
@@ -643,7 +670,9 @@ const testResults = {
 
 ---
 
-## 九、最佳实践
+## ⚠️ 避免错误
+
+### 最佳实践
 
 ### ✅ 推荐做法
 
@@ -686,7 +715,7 @@ const avg = samples.reduce((a, b) => a + b) / samples.length
 
 ---
 
-## 十、与其他优化的配合
+### 与其他优化的配合
 
 ### 与Lane优先级的配合
 
@@ -745,7 +774,7 @@ class FiberWorkLoop {
 
 ---
 
-## 十一、总结
+## 📊 文档总结
 
 ### 核心价值
 
@@ -771,6 +800,12 @@ class FiberWorkLoop {
 5. 持续收集数据优化
 ```
 
-### 下一步
+**参考文档**：
+- [01-PLANNING-ARCHITECTURE.md](./01-PLANNING-ARCHITECTURE.md) - 架构设计
+- [04-TECH-BLOCK-OPTIMIZATION.md](./04-TECH-BLOCK-OPTIMIZATION.md) - Block静态优化
 
-配合 `04-TECH-BLOCK-OPTIMIZATION.md` 的**Block静态优化**，进一步减少需要渲染的节点数量，性能再提升50%！
+---
+
+**最后更新**: 2025-11-09  
+**维护者**: VJS-UI Team  
+**状态**: ✅ 完成
