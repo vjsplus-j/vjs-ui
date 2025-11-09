@@ -185,6 +185,75 @@ var THEMES = [
     }
   },
   {
+    id: 'forest',
+    name: '森林',
+    icon: '🌲',
+    description: '神秘幽深的森林主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #0d1f0f 0%, #1a3a1f 40%, #0f2912 70%, #0d1f0f 100%)',
+      '--bg-primary': 'rgba(13, 31, 15, 0.92)',
+      '--bg-secondary': 'rgba(26, 58, 31, 0.88)',
+      '--bg-hover': 'rgba(76, 175, 80, 0.12)',
+      '--text-primary': '#d4f4dd',
+      '--text-secondary': '#a5d6a7',
+      '--text-muted': '#66bb6a',
+      '--primary': '#4caf50',
+      '--primary-hover': '#66bb6a',
+      '--success': '#81c784',
+      '--warning': '#ffb74d',
+      '--danger': '#e57373',
+      '--border': 'rgba(76, 175, 80, 0.2)',
+      '--shadow': '0 8px 32px rgba(13, 31, 15, 0.7), 0 2px 8px rgba(76, 175, 80, 0.15)',
+      '--glow': '0 0 30px rgba(76, 175, 80, 0.25), 0 0 60px rgba(26, 58, 31, 0.4), 0 0 100px rgba(76, 175, 80, 0.1)'
+    }
+  },
+  {
+    id: 'desert',
+    name: '沙漠',
+    icon: '🏜️',
+    description: '炽热辽阔的沙漠主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #2d1810 0%, #5d3a1a 40%, #8b6f47 70%, #5d3a1a 100%)',
+      '--bg-primary': 'rgba(45, 24, 16, 0.9)',
+      '--bg-secondary': 'rgba(93, 58, 26, 0.85)',
+      '--bg-hover': 'rgba(255, 183, 77, 0.12)',
+      '--text-primary': '#fff3e0',
+      '--text-secondary': '#ffe0b2',
+      '--text-muted': '#ffb74d',
+      '--primary': '#ffb74d',
+      '--primary-hover': '#ffa726',
+      '--success': '#aed581',
+      '--warning': '#ff9800',
+      '--danger': '#ff7043',
+      '--border': 'rgba(255, 183, 77, 0.25)',
+      '--shadow': '0 8px 32px rgba(45, 24, 16, 0.6), 0 2px 8px rgba(255, 183, 77, 0.2)',
+      '--glow': '0 0 30px rgba(255, 183, 77, 0.3), 0 0 60px rgba(139, 111, 71, 0.3), 0 0 100px rgba(255, 183, 77, 0.15)'
+    }
+  },
+  {
+    id: 'starry-night',
+    name: '星空',
+    icon: '✨',
+    description: '璀璨浪漫的星空主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #0a0e27 0%, #1a1f45 40%, #0f1635 70%, #0a0e27 100%)',
+      '--bg-primary': 'rgba(10, 14, 39, 0.92)',
+      '--bg-secondary': 'rgba(26, 31, 69, 0.88)',
+      '--bg-hover': 'rgba(187, 134, 252, 0.12)',
+      '--text-primary': '#e8e4ff',
+      '--text-secondary': '#bfb6fc',
+      '--text-muted': '#9b8ff0',
+      '--primary': '#bb86fc',
+      '--primary-hover': '#d0bcff',
+      '--success': '#81c784',
+      '--warning': '#ffd54f',
+      '--danger': '#ff8a80',
+      '--border': 'rgba(187, 134, 252, 0.2)',
+      '--shadow': '0 8px 32px rgba(10, 14, 39, 0.7), 0 2px 8px rgba(187, 134, 252, 0.15), 0 0 60px rgba(26, 31, 69, 0.5)',
+      '--glow': '0 0 30px rgba(187, 134, 252, 0.3), 0 0 60px rgba(15, 22, 53, 0.4), 0 0 100px rgba(187, 134, 252, 0.15)'
+    }
+  },
+  {
     id: 'bay-blue',
     name: '海湾蓝',
     icon: '🌊',
