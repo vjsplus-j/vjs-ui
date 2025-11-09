@@ -48,10 +48,29 @@ body {
   backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 12px;
-  min-width: 320px;
+  padding: 8px;
+  min-width: 280px;
+  max-height: 500px;
+  overflow-y: auto;
   box-shadow: var(--shadow);
   animation: slideDown 0.3s ease;
+}
+
+.theme-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.theme-panel::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.theme-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }
 
 @keyframes slideDown {
@@ -62,12 +81,12 @@ body {
 .theme-item {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  border-radius: 12px;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .theme-item:last-child { margin-bottom: 0; }
@@ -80,11 +99,11 @@ body {
   box-shadow: var(--glow);
 }
 
-.theme-icon { font-size: 26px; }
+.theme-icon { font-size: 20px; }
 
 .theme-info { flex: 1; }
-.theme-name { font-size: 16px; font-weight: 600; }
-.theme-desc { font-size: 12px; opacity: 0.7; margin-top: 2px; }
+.theme-name { font-size: 14px; font-weight: 600; }
+.theme-desc { font-size: 11px; opacity: 0.7; margin-top: 1px; }
 
 /* 容器 */
 .container {
