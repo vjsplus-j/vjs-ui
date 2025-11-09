@@ -676,4 +676,94 @@ core.useRenderer(new CustomRenderer())
 
 ## 十二、下一步
 
-参考详细实施文档：
+### 参考详细实施文档
+
+#### 📋 规划文档
+- [01-PLANNING-MASTER-PLAN.md](./01-PLANNING-MASTER-PLAN.md) - 总体实施计划
+- [01-PLANNING-MVP-PLAN.md](./01-PLANNING-MVP-PLAN.md) - MVP 4周实施路径
+- [01-PLANNING-YAGNI-PRINCIPLES.md](./01-PLANNING-YAGNI-PRINCIPLES.md) - YAGNI原则
+
+#### 🔧 实施文档
+- [02-IMPL-GUIDE-COMPLETE.md](./02-IMPL-GUIDE-COMPLETE.md) - 完整实施指南（总导航）
+- [02-IMPL-CURRENT-PHASE.md](./02-IMPL-CURRENT-PHASE.md) - 当前阶段实施计划
+- [02-IMPL-CHECKLIST.md](./02-IMPL-CHECKLIST.md) - 实施清单
+- [02-IMPL-PROGRESS.md](./02-IMPL-PROGRESS.md) - 实施进度追踪
+- [02-IMPL-REVIEW-WEEK1.md](./02-IMPL-REVIEW-WEEK1.md) - Week 1质量评估报告
+
+#### 📐 规范文档
+- [03-SPEC-API-DESIGN.md](./03-SPEC-API-DESIGN.md) - API设计规范
+- [03-SPEC-COMPONENT-DEV-GUIDE.md](./03-SPEC-COMPONENT-DEV-GUIDE.md) - 组件开发指南
+- [03-SPEC-COMPONENTS-API.md](./03-SPEC-COMPONENTS-API.md) - 组件API设计
+- [03-SPEC-TECHNICAL.md](./03-SPEC-TECHNICAL.md) - 技术规范
+- [03-SPEC-THEME-MANAGER.md](./03-SPEC-THEME-MANAGER.md) - 主题管理器设计
+
+#### 🔥 核心技术文档
+
+**Token系统**：
+- [04-TECH-TOKEN-PART1.md](./04-TECH-TOKEN-PART1.md) - Token系统（预期效果+设计+功能）
+- [04-TECH-TOKEN-PART2.md](./04-TECH-TOKEN-PART2.md) - Token系统（性能+技术+实现）
+- [04-TECH-TOKEN-PART3.md](./04-TECH-TOKEN-PART3.md) - Token系统（Bug+错误+测试）
+
+**响应式系统**：
+- [04-TECH-REACTIVE-PART1.md](./04-TECH-REACTIVE-PART1.md) - 响应式系统（预期效果+设计+功能）
+- [04-TECH-REACTIVE-SYSTEM.md](./04-TECH-REACTIVE-SYSTEM.md) - 响应式系统详细设计
+- [04-TECH-SIGNALS-REACTIVE.md](./04-TECH-SIGNALS-REACTIVE.md) - Signals响应式方案
+
+**DSL系统**：
+- [04-TECH-DSL-PART1.md](./04-TECH-DSL-PART1.md) - DSL系统（预期效果+设计+功能）🔴 核心
+- [04-TECH-DSL-COMPLETE.md](./04-TECH-DSL-COMPLETE.md) - DSL完整方案
+
+**性能优化**：
+- [04-TECH-PERFORMANCE-COMPLETE.md](./04-TECH-PERFORMANCE-COMPLETE.md) - 性能优化完整方案
+- [04-TECH-RENDER-PERFORMANCE.md](./04-TECH-RENDER-PERFORMANCE.md) - 渲染性能优化
+- [04-TECH-BLOCK-OPTIMIZATION.md](./04-TECH-BLOCK-OPTIMIZATION.md) - 块级优化
+- [04-TECH-ADAPTIVE-FRAME-BUDGET.md](./04-TECH-ADAPTIVE-FRAME-BUDGET.md) - 自适应帧预算
+- [04-TECH-ADAPTIVE-MEMORY.md](./04-TECH-ADAPTIVE-MEMORY.md) - 自适应内存管理
+
+**安全系统**：
+- [04-TECH-SECURITY-GUIDE.md](./04-TECH-SECURITY-GUIDE.md) - 安全指南
+- [04-TECH-CSP-POLICY.md](./04-TECH-CSP-POLICY.md) - CSP内容安全策略
+
+**高级特性**：
+- [04-TECH-LIFECYCLE-SYSTEM.md](./04-TECH-LIFECYCLE-SYSTEM.md) - 生命周期系统
+- [04-TECH-SUSPENSE-BOUNDARY.md](./04-TECH-SUSPENSE-BOUNDARY.md) - Suspense边界
+- [04-TECH-VUE3-INTEGRATION.md](./04-TECH-VUE3-INTEGRATION.md) - Vue3集成方案
+
+#### ✅ 测试文档
+- [02-TEST-COMPLETE.md](./02-TEST-COMPLETE.md) - 完整测试方案
+
+#### 📊 项目管理
+- [05-PROJECT-ROADMAP.md](./05-PROJECT-ROADMAP.md) - 项目路线图
+- [05-PROJECT-SUMMARY.md](./05-PROJECT-SUMMARY.md) - 项目总结
+- [05-PROJECT-AUDIT-OPTIMIZATION.md](./05-PROJECT-AUDIT-OPTIMIZATION.md) - 项目审计优化
+
+#### 📚 文档索引
+- [00-DOC-INDEX.md](./00-DOC-INDEX.md) - 文档分类索引（快速查找）
+- [00-TECH-DOC-TEMPLATE.md](./00-TECH-DOC-TEMPLATE.md) - 技术文档模板
+- [README-INTERNAL.md](./README-INTERNAL.md) - 内部文档说明
+
+---
+
+## 十三、快速导航
+
+### 🚀 新成员入职？
+1. 先读：[CORE-PRINCIPLES.md](../CORE-PRINCIPLES.md) - 核心原则
+2. 再读：[01-PLANNING-ARCHITECTURE.md](./01-PLANNING-ARCHITECTURE.md) - 本文档
+3. 然后：[01-PLANNING-MASTER-PLAN.md](./01-PLANNING-MASTER-PLAN.md) - 总体计划
+4. 最后：根据角色阅读对应技术文档
+
+### 💻 开始开发？
+1. 查看：[02-IMPL-CURRENT-PHASE.md](./02-IMPL-CURRENT-PHASE.md) - 当前阶段
+2. 参考：[02-IMPL-GUIDE-COMPLETE.md](./02-IMPL-GUIDE-COMPLETE.md) - 实施指南
+3. 遵循：[03-SPEC-COMPONENT-DEV-GUIDE.md](./03-SPEC-COMPONENT-DEV-GUIDE.md) - 开发规范
+
+### 🔍 查找技术细节？
+1. 使用：[00-DOC-INDEX.md](./00-DOC-INDEX.md) - 文档索引
+2. 按主题查找：Token/响应式/DSL/性能/安全等
+3. 按优先级查找：P0/P1/P2
+
+---
+
+**最后更新**: 2025-11-09  
+**维护者**: VJS-UI Team  
+**状态**: ✅ 持续更新

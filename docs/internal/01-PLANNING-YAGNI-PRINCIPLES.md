@@ -22,7 +22,7 @@ class AdvancedDSLCompiler {
 // ✅ 遵循YAGNI：只实现当前需要的
 class SimpleDSLParser {
   parse(dsl: DSLNode): VNode {
-    // 只做最基础的解析
+    // 这里只做了最基础的解析，需要考虑更完整的解析或重新设计
     return this.parseBasic(dsl)
   }
 }
@@ -30,8 +30,8 @@ class SimpleDSLParser {
 
 **关键判断标准**：
 1. 这个功能**现在**是否必需？
-2. 没有这个功能，项目能否继续？
-3. 3个重复场景出现了吗？
+2. 没有这个功能，都包含哪些内容？缺少这个功能能项目带来什么功能性的缺失？
+3. 3个重复场景出现了吗？YAGNI的设计是否完整？YAGNI的方案有没有测试用例？
 
 ---
 
