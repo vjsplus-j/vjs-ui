@@ -114,5 +114,28 @@ var THEMES = [
       '--shadow': '0 8px 32px rgba(192, 132, 252, 0.3)',
       '--glow': '0 0 20px rgba(192, 132, 252, 0.4)'
     }
+  },
+  {
+    id: 'cream-light',
+    name: '奶白商务',
+    icon: '☕',
+    description: '舒适优雅的企业浅色主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #f8f9fa 0%, #fff5e6 100%)',
+      '--bg-primary': 'rgba(255, 255, 255, 0.9)',
+      '--bg-secondary': 'rgba(248, 249, 250, 0.8)',
+      '--bg-hover': 'rgba(59, 130, 246, 0.08)',
+      '--text-primary': '#1f2937',
+      '--text-secondary': '#4b5563',
+      '--text-muted': '#9ca3af',
+      '--primary': '#3b82f6',
+      '--primary-hover': '#2563eb',
+      '--success': '#10b981',
+      '--warning': '#f59e0b',
+      '--danger': '#ef4444',
+      '--border': 'rgba(209, 213, 219, 0.6)',
+      '--shadow': '0 4px 16px rgba(0, 0, 0, 0.08)',
+      '--glow': '0 0 20px rgba(59, 130, 246, 0.15)'
+    }
   }
 ]
