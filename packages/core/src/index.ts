@@ -1,11 +1,10 @@
 /**
  * @vjs-ui/core
- * 核心引擎
+ * 核心引擎 - DSL驱动的跨框架UI组件库核心
  */
 
-// 导出Token系统
-export * from './token/simple-token'
-export type * from './types/token'
+// 导出Token系统（完整版）
+export * from './token'
 
 // 导出响应式系统
 export * from './reactive'
