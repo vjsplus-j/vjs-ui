@@ -13,6 +13,7 @@ export interface ReactiveEffect extends EffectFn {
 export interface EffectOptions {
   lazy?: boolean
   scheduler?: (effect: ReactiveEffect) => void
+  onStop?: () => void
 }
 
 // 当前正在执行的effect
