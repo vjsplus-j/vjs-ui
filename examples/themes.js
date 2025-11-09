@@ -321,5 +321,28 @@ var THEMES = [
       '--shadow': '0 4px 20px rgba(147, 112, 219, 0.1), 0 1px 3px rgba(0, 0, 0, 0.04)',
       '--glow': '0 0 25px rgba(147, 112, 219, 0.14), 0 0 50px rgba(237, 233, 254, 0.4)'
     }
+  },
+  {
+    id: 'pure-white',
+    name: '纯白',
+    icon: '⚪',
+    description: '极简优雅的纯白主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #ffffff 0%, #fefefe 50%, #fdfdfd 100%)',
+      '--bg-primary': 'rgba(255, 255, 255, 0.98)',
+      '--bg-secondary': 'rgba(250, 250, 250, 0.95)',
+      '--bg-hover': 'rgba(71, 85, 105, 0.05)',
+      '--text-primary': '#1a202c',
+      '--text-secondary': '#2d3748',
+      '--text-muted': '#718096',
+      '--primary': '#4a5568',
+      '--primary-hover': '#2d3748',
+      '--success': '#48bb78',
+      '--warning': '#ed8936',
+      '--danger': '#f56565',
+      '--border': 'rgba(226, 232, 240, 0.8)',
+      '--shadow': '0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02), 0 0 1px rgba(0, 0, 0, 0.05)',
+      '--glow': '0 0 20px rgba(74, 85, 104, 0.08), 0 0 40px rgba(203, 213, 224, 0.15)'
+    }
   }
 ]
