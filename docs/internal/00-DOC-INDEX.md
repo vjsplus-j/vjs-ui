@@ -90,13 +90,6 @@
 | F-01 | [02-TEST-COMPLETE.md](./02-TEST-COMPLETE.md) | 测试完整方案 | 🟡 P1 | 📝 设计完成 |
 | F-02 | [04-TECH-TESTING-STRATEGY.md](./04-TECH-TESTING-STRATEGY.md) | 测试策略 | 🟡 P1 | 📝 设计完成 |
 
-### ⚪ G类：项目管理（管理）
-
-| 序号 | 文档 | 说明 | 优先级 | 状态 |
-|------|------|------|--------|------|
-| G-01 | [RISK-ASSESSMENT.md](./RISK-ASSESSMENT.md) | 风险评估 | 🟡 P1 | ✅ 完成 |
-| G-02 | [UPGRADE-VISION.md](./UPGRADE-VISION.md) | 升级愿景 | 🟢 P2 | ✅ 完成 |
-
 ---
 
 ## 📊 文档状态统计
@@ -149,7 +142,6 @@
 **架构师？** → B类（规划文档）  
 **开发人员？** → C类（实施文档）+ E类（技术文档）  
 **测试人员？** → F类（测试文档）  
-**项目经理？** → G类（项目管理）
 
 ### 按阶段查找
 
