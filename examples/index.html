@@ -9,8 +9,8 @@
 </head>
 <body id="app">
   <!-- 主题切换器 -->
-  <div class="theme-switcher">
-    <button class="theme-btn" @click="showPanel = !showPanel">
+  <div class="theme-switcher" @click.stop>
+    <button class="theme-btn" @click.stop="showPanel = !showPanel">
       <span class="theme-icon">{{ currentTheme.icon }}</span>
       <span>{{ currentTheme.name }}</span>
     </button>
