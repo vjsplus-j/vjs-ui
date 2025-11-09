@@ -21,5 +21,13 @@ export default defineConfig({
     },
     sourcemap: true,
     minify: false
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html']
+    }
   }
 })

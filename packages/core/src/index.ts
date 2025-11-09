@@ -3,6 +3,10 @@
  * 核心引擎
  */
 
+// 导出Token系统
+export * from './token/simple-token'
+export type * from './types/token'
+
 // 导出响应式系统
 export * from './reactive'
 
