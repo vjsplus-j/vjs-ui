@@ -1253,13 +1253,11 @@ describe('computed', () => {
 
 **参考文档**：
 - [01-PLANNING-ARCHITECTURE.md](./01-PLANNING-ARCHITECTURE.md) - 架构设计
-- [04-TECH-DSL-COMPLETE-V2.md](./04-TECH-DSL-COMPLETE-V2.md) - DSL系统
-- [04-TECH-TOKEN-PART1.md](./04-TECH-TOKEN-PART1.md) - Token系统
+- [04-TECH-DSL.md](./04-TECH-DSL.md) - DSL系统
+- [04-TECH-TOKEN.md](./04-TECH-TOKEN.md) - Token系统
 
 ---
 
 **最后更新**: 2025-11-09  
 **维护者**: VJS-UI Team  
-**状态**: ✅ 完整版已合并
-
-**响应式系统是VJS-UI的核心引擎！这份文档是我们框架方案的完整记录！** ⚡✨
+**状态**: ✅ 完成

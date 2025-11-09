@@ -700,18 +700,14 @@ core.useRenderer(new CustomRenderer())
 #### 🔥 核心技术文档
 
 **Token系统**：
-- [04-TECH-TOKEN-PART1.md](./04-TECH-TOKEN-PART1.md) - Token系统（预期效果+设计+功能）
-- [04-TECH-TOKEN-PART2.md](./04-TECH-TOKEN-PART2.md) - Token系统（性能+技术+实现）
-- [04-TECH-TOKEN-PART3.md](./04-TECH-TOKEN-PART3.md) - Token系统（Bug+错误+测试）
+- [04-TECH-TOKEN.md](./04-TECH-TOKEN.md) - Token系统完整技术文档
 
 **响应式系统**：
-- [04-TECH-REACTIVE-PART1.md](./04-TECH-REACTIVE-PART1.md) - 响应式系统（预期效果+设计+功能）
-- [04-TECH-REACTIVE-SYSTEM.md](./04-TECH-REACTIVE-SYSTEM.md) - 响应式系统详细设计
-- [04-TECH-SIGNALS-REACTIVE.md](./04-TECH-SIGNALS-REACTIVE.md) - Signals响应式方案
+- [04-TECH-REACTIVE.md](./04-TECH-REACTIVE.md) - 响应式系统完整技术文档
+- [04-TECH-SIGNALS-REACTIVE.md](./04-TECH-SIGNALS-REACTIVE.md) - Signals响应式方案（备选）
 
 **DSL系统**：
-- [04-TECH-DSL-PART1.md](./04-TECH-DSL-PART1.md) - DSL系统（预期效果+设计+功能）🔴 核心
-- [04-TECH-DSL-COMPLETE.md](./04-TECH-DSL-COMPLETE.md) - DSL完整方案
+- [04-TECH-DSL.md](./04-TECH-DSL.md) - DSL系统完整技术文档 🔴 核心
 
 **性能优化**：
 - [04-TECH-PERFORMANCE-COMPLETE.md](./04-TECH-PERFORMANCE-COMPLETE.md) - 性能优化完整方案

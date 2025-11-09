@@ -2374,13 +2374,11 @@ const parser = new DSLParser({
 
 **参考文档**：
 - [01-PLANNING-ARCHITECTURE.md](./01-PLANNING-ARCHITECTURE.md) - 架构设计
-- [04-TECH-REACTIVE-PART1.md](./04-TECH-REACTIVE-PART1.md) - 响应式系统
-- [04-TECH-TOKEN-PART1.md](./04-TECH-TOKEN-PART1.md) - Token系统
+- [04-TECH-REACTIVE.md](./04-TECH-REACTIVE.md) - 响应式系统
+- [04-TECH-TOKEN.md](./04-TECH-TOKEN.md) - Token系统
 
 ---
 
 **最后更新**: 2025-11-09  
 **维护者**: VJS-UI Team  
-**状态**: ✅ 完整版已合并
-
-**DSL是VJS-UI的核心！这份文档是我们框架方案的完整记录！** 🔴✨
+**状态**: ✅ 完成
