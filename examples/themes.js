@@ -1,5 +1,5 @@
 // VJS-UI 主题配置
-const THEMES = [
+var THEMES = [
   {
     id: 'cosmic-dark',
     name: '宇宙黑',
