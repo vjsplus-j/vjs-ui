@@ -344,5 +344,28 @@ var THEMES = [
       '--shadow': '0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02), 0 0 1px rgba(0, 0, 0, 0.05)',
       '--glow': '0 0 20px rgba(74, 85, 104, 0.08), 0 0 40px rgba(203, 213, 224, 0.15)'
     }
+  },
+  {
+    id: 'taiji',
+    name: '太极',
+    icon: '☯️',
+    description: '阴阳平衡的黑白主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #18181b 0%, #f4f4f5 50%, #27272a 100%)',
+      '--bg-primary': 'rgba(39, 39, 42, 0.88)',
+      '--bg-secondary': 'rgba(63, 63, 70, 0.82)',
+      '--bg-hover': 'rgba(244, 244, 245, 0.12)',
+      '--text-primary': '#fafafa',
+      '--text-secondary': '#e4e4e7',
+      '--text-muted': '#a1a1aa',
+      '--primary': '#d4d4d8',
+      '--primary-hover': '#fafafa',
+      '--success': '#86efac',
+      '--warning': '#fde047',
+      '--danger': '#fca5a5',
+      '--border': 'rgba(228, 228, 231, 0.15)',
+      '--shadow': '0 8px 32px rgba(0, 0, 0, 0.6), 0 0 2px rgba(255, 255, 255, 0.1)',
+      '--glow': '0 0 30px rgba(212, 212, 216, 0.25), 0 0 60px rgba(39, 39, 42, 0.4)'
+    }
   }
 ]
