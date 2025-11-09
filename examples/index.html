@@ -62,11 +62,11 @@
       </div>
 
       <div class="demo-group">
-        <div class="demo-label">按钮尺寸</div>
+        <div class="demo-label">按钮尺寸（点击试试）</div>
         <div class="btn-group">
-          <button class="btn btn-primary btn-large">Large Button</button>
-          <button class="btn btn-primary">Default Button</button>
-          <button class="btn btn-primary btn-small">Small Button</button>
+          <button class="btn btn-primary btn-large" @click="handleClick('Large')">Large Button</button>
+          <button class="btn btn-primary" @click="handleClick('Default Size')">Default Button</button>
+          <button class="btn btn-primary btn-small" @click="handleClick('Small')">Small Button</button>
         </div>
       </div>
     </div>
@@ -130,7 +130,7 @@
             </p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-primary btn-small" @click="alert('操作成功！')">
+            <button class="btn btn-primary btn-small" @click="handleAction">
               执行操作
             </button>
           </div>
@@ -199,6 +199,10 @@
           setTimeout(() => { lastClicked.value = '' }, 3000)
         }
 
+        const handleAction = () => {
+          alert('🎉 操作成功！')
+        }
+
         // 初始化主题
         applyTheme(themes[0])
 
@@ -216,7 +220,8 @@
           lastClicked,
           totalClicks,
           form,
-          handleClick
+          handleClick,
+          handleAction
         }
       }
     }).mount('#app')
