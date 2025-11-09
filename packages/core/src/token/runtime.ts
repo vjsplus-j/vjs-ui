@@ -9,7 +9,6 @@
  */
 
 import type { FlatTokenMap, TokenRuntimeOptions, TokenChangeEvent } from '../types/token'
-import { TokenCompiler } from './compiler'
 
 /**
  * Token运行时管理器
@@ -41,7 +40,6 @@ import { TokenCompiler } from './compiler'
  */
 export class TokenRuntime {
   private options: Required<TokenRuntimeOptions>
-  private compiler: TokenCompiler
   private currentTokens: FlatTokenMap = {}
   private listeners: Array<(event: TokenChangeEvent) => void> = []
   private cssVarCache: Map<string, string> = new Map()
@@ -53,8 +51,6 @@ export class TokenRuntime {
       enableTransition: options.enableTransition ?? true,
       transitionDuration: options.transitionDuration ?? 300
     }
-
-    this.compiler = new TokenCompiler({ prefix: this.options.prefix })
   }
 
   /**
