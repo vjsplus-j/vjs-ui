@@ -677,7 +677,3 @@ core.useRenderer(new CustomRenderer())
 ## 十二、下一步
 
 参考详细实施文档：
-- [00-MASTER-PLAN.md](./00-MASTER-PLAN.md) - 总体计划
-- [01-PHASE-1-CORE.md](./01-PHASE-1-CORE.md) - 阶段1实施
-- [TECHNICAL-SPECS.md](./TECHNICAL-SPECS.md) - 技术规范
-- [API-DESIGN.md](./API-DESIGN.md) - API设计
