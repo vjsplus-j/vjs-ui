@@ -25,7 +25,7 @@
 
 这些文档包含详细的技术实现、开发规划和内部管理信息，仅供项目团队使用。
 
-📁 **[internal/](./internal/)** - 内部文档目录
+📁 **[internal/](./internal/README-INTERNAL.md)** - 内部文档目录
 
 #### 📋 规划文档
 - [架构规划](./internal/01-PLANNING-ARCHITECTURE.md)
@@ -53,7 +53,7 @@
 - 浏览器兼容
 - 以及17个高级特性实现
 
-**[查看完整技术文档列表 →](./internal/)**
+**[查看完整技术文档列表 →](./internal/README-INTERNAL.md)**
 
 #### 📊 项目管理
 - [项目总结](./internal/05-PROJECT-SUMMARY.md)
@@ -74,7 +74,7 @@
 
 1. 🔧 [API设计](./internal/03-SPEC-API-DESIGN.md) - 深入API
 2. 💻 [组件开发指南](./internal/03-SPEC-COMPONENT-DEV-GUIDE.md) - 自定义组件
-3. ⚡ [技术实现文档](./internal/) - 核心原理
+3. ⚡ [技术实现文档](./internal/README-INTERNAL.md) - 核心原理
 
 ### 团队协作
 
@@ -122,7 +122,7 @@
 | **使用者** | [快速开始](./GETTING-STARTED.md) + [组件清单](./COMPONENTS.md) |
 | **开发者** | [技术架构](./ARCHITECTURE.md) + [组件开发](./internal/03-SPEC-COMPONENT-DEV-GUIDE.md) |
 | **团队管理** | [实施清单](./internal/02-IMPL-CHECKLIST.md) + [项目总结](./internal/05-PROJECT-SUMMARY.md) |
-| **技术专家** | [完整技术文档](./internal/) |
+| **技术专家** | [完整技术文档](./internal/README-INTERNAL.md) |
 
 ---
 
