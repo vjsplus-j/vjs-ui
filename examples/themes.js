@@ -206,5 +206,120 @@ var THEMES = [
       '--shadow': '0 8px 32px rgba(6, 182, 212, 0.3)',
       '--glow': '0 0 25px rgba(6, 182, 212, 0.5)'
     }
+  },
+  {
+    id: 'sakura-pink',
+    name: '樱花粉',
+    icon: '🌸',
+    description: '温柔浪漫的粉色主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%)',
+      '--bg-primary': 'rgba(255, 255, 255, 0.9)',
+      '--bg-secondary': 'rgba(254, 242, 242, 0.85)',
+      '--bg-hover': 'rgba(251, 113, 133, 0.1)',
+      '--text-primary': '#881337',
+      '--text-secondary': '#be123c',
+      '--text-muted': '#f43f5e',
+      '--primary': '#f43f5e',
+      '--primary-hover': '#e11d48',
+      '--success': '#22c55e',
+      '--warning': '#f59e0b',
+      '--danger': '#dc2626',
+      '--border': 'rgba(251, 113, 133, 0.25)',
+      '--shadow': '0 4px 16px rgba(251, 113, 133, 0.15)',
+      '--glow': '0 0 20px rgba(251, 113, 133, 0.2)'
+    }
+  },
+  {
+    id: 'sky-blue',
+    name: '天空蓝',
+    icon: '☁️',
+    description: '清爽明快的蓝天主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
+      '--bg-primary': 'rgba(255, 255, 255, 0.9)',
+      '--bg-secondary': 'rgba(240, 249, 255, 0.85)',
+      '--bg-hover': 'rgba(59, 130, 246, 0.08)',
+      '--text-primary': '#1e3a8a',
+      '--text-secondary': '#1e40af',
+      '--text-muted': '#3b82f6',
+      '--primary': '#3b82f6',
+      '--primary-hover': '#2563eb',
+      '--success': '#10b981',
+      '--warning': '#f59e0b',
+      '--danger': '#ef4444',
+      '--border': 'rgba(59, 130, 246, 0.2)',
+      '--shadow': '0 4px 16px rgba(59, 130, 246, 0.12)',
+      '--glow': '0 0 20px rgba(59, 130, 246, 0.18)'
+    }
+  },
+  {
+    id: 'mint-green',
+    name: '薄荷绿',
+    icon: '🍃',
+    description: '清新护眼的薄荷主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+      '--bg-primary': 'rgba(255, 255, 255, 0.9)',
+      '--bg-secondary': 'rgba(240, 253, 244, 0.85)',
+      '--bg-hover': 'rgba(34, 197, 94, 0.08)',
+      '--text-primary': '#14532d',
+      '--text-secondary': '#166534',
+      '--text-muted': '#22c55e',
+      '--primary': '#22c55e',
+      '--primary-hover': '#16a34a',
+      '--success': '#10b981',
+      '--warning': '#f59e0b',
+      '--danger': '#ef4444',
+      '--border': 'rgba(34, 197, 94, 0.2)',
+      '--shadow': '0 4px 16px rgba(34, 197, 94, 0.12)',
+      '--glow': '0 0 20px rgba(34, 197, 94, 0.18)'
+    }
+  },
+  {
+    id: 'sunset-orange',
+    name: '日落橙',
+    icon: '🌅',
+    description: '温暖活力的橙色主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)',
+      '--bg-primary': 'rgba(255, 255, 255, 0.9)',
+      '--bg-secondary': 'rgba(255, 247, 237, 0.85)',
+      '--bg-hover': 'rgba(249, 115, 22, 0.08)',
+      '--text-primary': '#7c2d12',
+      '--text-secondary': '#9a3412',
+      '--text-muted': '#f97316',
+      '--primary': '#f97316',
+      '--primary-hover': '#ea580c',
+      '--success': '#22c55e',
+      '--warning': '#eab308',
+      '--danger': '#ef4444',
+      '--border': 'rgba(249, 115, 22, 0.2)',
+      '--shadow': '0 4px 16px rgba(249, 115, 22, 0.12)',
+      '--glow': '0 0 20px rgba(249, 115, 22, 0.18)'
+    }
+  },
+  {
+    id: 'lavender-purple',
+    name: '薰衣草紫',
+    icon: '💜',
+    description: '优雅梦幻的紫色主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%)',
+      '--bg-primary': 'rgba(255, 255, 255, 0.9)',
+      '--bg-secondary': 'rgba(250, 245, 255, 0.85)',
+      '--bg-hover': 'rgba(168, 85, 247, 0.08)',
+      '--text-primary': '#581c87',
+      '--text-secondary': '#6b21a8',
+      '--text-muted': '#a855f7',
+      '--primary': '#a855f7',
+      '--primary-hover': '#9333ea',
+      '--success': '#22c55e',
+      '--warning': '#f59e0b',
+      '--danger': '#ec4899',
+      '--border': 'rgba(168, 85, 247, 0.2)',
+      '--shadow': '0 4px 16px rgba(168, 85, 247, 0.12)',
+      '--glow': '0 0 20px rgba(168, 85, 247, 0.18)'
+    }
   }
 ]
