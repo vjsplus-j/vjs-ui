@@ -137,5 +137,74 @@ var THEMES = [
       '--shadow': '0 4px 16px rgba(0, 0, 0, 0.08)',
       '--glow': '0 0 20px rgba(59, 130, 246, 0.15)'
     }
+  },
+  {
+    id: 'bumblebee',
+    name: '大黄蜂',
+    icon: '🐝',
+    description: '活力四射的黄黑配色',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #1a1a1a 0%, #2d2600 100%)',
+      '--bg-primary': 'rgba(30, 30, 30, 0.85)',
+      '--bg-secondary': 'rgba(45, 38, 0, 0.7)',
+      '--bg-hover': 'rgba(234, 179, 8, 0.15)',
+      '--text-primary': '#fef3c7',
+      '--text-secondary': '#fde68a',
+      '--text-muted': '#a16207',
+      '--primary': '#eab308',
+      '--primary-hover': '#facc15',
+      '--success': '#84cc16',
+      '--warning': '#f59e0b',
+      '--danger': '#ef4444',
+      '--border': 'rgba(234, 179, 8, 0.3)',
+      '--shadow': '0 8px 32px rgba(234, 179, 8, 0.2)',
+      '--glow': '0 0 30px rgba(234, 179, 8, 0.5)'
+    }
+  },
+  {
+    id: 'prairie-green',
+    name: '草原绿',
+    icon: '🌿',
+    description: '清新自然的绿色主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #064e3b 0%, #14532d 100%)',
+      '--bg-primary': 'rgba(6, 78, 59, 0.75)',
+      '--bg-secondary': 'rgba(20, 83, 45, 0.65)',
+      '--bg-hover': 'rgba(34, 197, 94, 0.15)',
+      '--text-primary': '#d1fae5',
+      '--text-secondary': '#a7f3d0',
+      '--text-muted': '#6ee7b7',
+      '--primary': '#22c55e',
+      '--primary-hover': '#16a34a',
+      '--success': '#10b981',
+      '--warning': '#fbbf24',
+      '--danger': '#f87171',
+      '--border': 'rgba(34, 197, 94, 0.3)',
+      '--shadow': '0 8px 32px rgba(34, 197, 94, 0.25)',
+      '--glow': '0 0 25px rgba(34, 197, 94, 0.4)'
+    }
+  },
+  {
+    id: 'bay-blue',
+    name: '海湾蓝',
+    icon: '🌊',
+    description: '清澈宁静的海洋主题',
+    variables: {
+      '--bg-body': 'linear-gradient(135deg, #0c4a6e 0%, #164e63 100%)',
+      '--bg-primary': 'rgba(12, 74, 110, 0.8)',
+      '--bg-secondary': 'rgba(22, 78, 99, 0.7)',
+      '--bg-hover': 'rgba(6, 182, 212, 0.15)',
+      '--text-primary': '#cffafe',
+      '--text-secondary': '#a5f3fc',
+      '--text-muted': '#67e8f9',
+      '--primary': '#06b6d4',
+      '--primary-hover': '#0891b2',
+      '--success': '#14b8a6',
+      '--warning': '#fbbf24',
+      '--danger': '#f472b6',
+      '--border': 'rgba(6, 182, 212, 0.35)',
+      '--shadow': '0 8px 32px rgba(6, 182, 212, 0.3)',
+      '--glow': '0 0 25px rgba(6, 182, 212, 0.5)'
+    }
   }
 ]
